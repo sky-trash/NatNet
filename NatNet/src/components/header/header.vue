@@ -1,5 +1,6 @@
 <script>
-
+  import '../../assets/style/root.scss'
+  import '../../assets/style/header.scss'
 </script>
 <template>
   <div class="container">
