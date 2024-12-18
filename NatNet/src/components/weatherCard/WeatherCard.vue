@@ -3,7 +3,6 @@ import Back from "../back/back.vue"
 import Weather from "../weather/weather.vue"
 </script>
 <template>
-  <Back/>
   <Weather/>
 </template>
 <!-- <style lang="scss" scoped>
