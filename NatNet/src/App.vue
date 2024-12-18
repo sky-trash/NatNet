@@ -1,11 +1,7 @@
 <script setup>
-import Index from './components/Index.vue'
+import RootLayout from "./components/layout/RootLayout/RootLayout.vue"
 </script>
 
 <template>
-  <Index/>
+  <RootLayout />
 </template>
-
-<style scoped>
-
-</style>

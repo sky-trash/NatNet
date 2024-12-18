@@ -1,0 +1,19 @@
+.bookmarks {
+  padding: 88px 453px 0 455px;
+
+  &__text {
+
+    h1 {
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 16px;
+      text-align: center;
+      color: #8a91ab;
+    
+      width: 263px;
+    }
+  }
+  &__img {
+    padding: 20px 102px 0 102px;
+  }
+}

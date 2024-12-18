@@ -1,0 +1,35 @@
+.header {
+  background: #2a2f45;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    padding: 23px;
+    width: 197px;
+    height: 65px;
+  }
+  &__logo {
+    display: flex;
+
+    &_img {
+      width: 30px;
+      height: 30px;
+
+      img {
+        width: 90px;
+        height: 90px;
+        margin: -20px 0 0 -20px;
+      }
+    }
+    &_text {
+      padding: 5.5px 0 5.5px 12px;
+
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 16px;
+        color: #fff;
+      }
+    }
+  }
+}
