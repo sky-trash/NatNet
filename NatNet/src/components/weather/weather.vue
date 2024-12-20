@@ -15,42 +15,6 @@ export default {
       
     }
   }
-  // {
-  //   id: 2,
-  //   city: "Ижевск",
-  //   precipitation: "Облачно",
-  //   degree_text: "-17°",
-  //   degree_img: "../../../public/weather/Clouds.svg",
-  //   pressure: "758",
-  //   sunset: "19:00"
-  // },
-  // {
-  //   id: 3,
-  //   city: "Самара",
-  //   precipitation: "Дождь",
-  //   degree_text: "-20°",
-  //   degree_img: "../../../public/weather/Rain.svg",
-  //   pressure: "760",
-  //   sunset: "19:00"
-  // },
-  // {
-  //   id: 4,
-  //   city: "Санкт-Петербург",
-  //   precipitation: "Слабый снег",
-  //   degree_text: "-3°",
-  //   degree_img: "../../../public/weather/Snow.svg",
-  //   pressure: "757",
-  //   sunset: "20:00"
-  // },
-  // {
-  //   id: 5,
-  //   city: "Казань",
-  //   precipitation: "Солнечно",
-  //   degree_text: "-10°",
-  //   degree_img: "../../../public/weather/Clear.svg",
-  //   pressure: "759",
-  //   sunset: "18:00"
-  // },
 };
 </script>
 <template>
@@ -71,17 +35,17 @@ export default {
   </div>
   <div class="weather">
     <div class="weather__city">
-      <h1>{{ city }}</h1>
+      <h1>Ижевск</h1>
     </div>
     <div class="weather__precipitation">
-      <p>{{ precipitation }}</p>
+      <p>Облано с прояснениями</p>
     </div>
     <div class="weather__degree">
       <div class="weather__degree_text">
-        <h1>{{ degree_text }}</h1>
+        <h1>-13°</h1>
       </div>
       <div class="weather__degree_img">
-        <img :src="degree_img" alt="">
+        <img src="../../../public/weather/Snow.svg" alt="">
       </div>
     </div>
     <div class="weather__pressure">
@@ -89,11 +53,11 @@ export default {
         <img src="../../../public/weather/barometer 1.svg" alt="">
       </div>
       <div class="weather__pressure_text">
-        <p>{{ pressure }} мм рт.ст.</p>
+        <p>756 мм рт.ст.</p>
       </div>
     </div>
     <div class="weather__sunset">
-      <h1>Закат в {{ sunset }}</h1>
+      <h1>Закат в 18:00</h1>
     </div>
   </div>
 </template>
