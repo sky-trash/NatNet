@@ -19,3 +19,15 @@
     }
   }
 }
+@media screen and (width: 360px) {
+  .searth {
+    padding: 20px 20px 0 20px;
+
+    &__form {
+
+      input {
+        width: 315px;
+      }
+    }
+  }
+}

@@ -29,7 +29,7 @@ export default {
         </div>
       </div>
     </a>
-    <div class="back__right" @click="addToCart">
+    <div class="back__right">
       <img src="../../../public/bookmark/Bookmark_back.svg" alt="">
     </div>
   </div>
