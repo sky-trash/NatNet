@@ -1,0 +1,54 @@
+.weather {
+  display: flex;
+  padding: 55px 140px;
+  flex-wrap: wrap;
+  gap: 31px;
+
+  &__card {
+    width: 270px;
+    height: 190px;
+    background: #2a2f45;
+
+    &_city {
+      display: flex;
+      justify-content: center;
+
+      padding-top: 23px;
+
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 111%;
+        text-align: center;
+        color: #fff;
+      }
+    }
+    &_text {
+      display: flex;
+      justify-content: center;
+
+      padding-top: 12px;
+
+      p {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 111%;
+        text-align: center;
+        color: #fff;
+      }
+    }
+    &_icons {
+      display: flex;
+      justify-content: center;
+
+      padding: 2px;
+
+      img {
+        width: 78px;
+        height: 78px;
+      }
+    }
+  }
+}
