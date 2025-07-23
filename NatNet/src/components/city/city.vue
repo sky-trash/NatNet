@@ -7,7 +7,7 @@
       <img src="../../../public/city/Arrow.svg" alt="arrow">
     </div>
     <div class="city__text">
-      <h1>Начните вводить город, например, <a href="/WeatherCard">Ижевск</a></h1>
+      <h1>Начните вводить город, например, <a href="/WeatherCity">Ижевск</a></h1>
     </div>
   </div>
 </template>
