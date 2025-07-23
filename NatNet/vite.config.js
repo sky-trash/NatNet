@@ -9,6 +9,10 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(process.cwd(), 'public')], // Указываем папку public
+      symbolId: 'icon-[name]', // Формат id: icon-chevron-left
+    }),
   ],
   resolve: {
     alias: {
