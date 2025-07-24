@@ -1,13 +1,12 @@
 .weatherCity {
   display: flex;
-  padding: 55px 140px;
   flex-wrap: wrap;
-  gap: 31px;
 
   &__card {
     width: 270px;
     height: 190px;
     background: #2a2f45;
+    border-radius: 6px;
 
     &_city {
       display: flex;

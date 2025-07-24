@@ -23,7 +23,7 @@ onMounted(() => {
 
 // Поиск городов с debounce
 const fetchCities = debounce(async (query) => {
-  if (!API_KEY || query.length < 3) {
+  if (!API_KEY || query.length === 0) {  
     suggestions.value = [];
     return;
   }
@@ -31,7 +31,7 @@ const fetchCities = debounce(async (query) => {
   try {
     isLoading.value = true;
     error.value = null;
-    
+
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/find`,
       {
@@ -39,7 +39,8 @@ const fetchCities = debounce(async (query) => {
           q: query,
           appid: API_KEY,
           units: 'metric',
-          lang: 'ru'
+          lang: 'ru',
+          cnt: 5 
         },
         validateStatus: (status) => status < 500
       }
@@ -50,12 +51,14 @@ const fetchCities = debounce(async (query) => {
     }
 
     suggestions.value = response.data?.list || [];
-    if (!suggestions.value.length) {
+    if (!suggestions.value.length && query.length >= 3) { 
       error.value = 'Город не найден';
+    } else if (!suggestions.value.length) {
+      error.value = 'Продолжайте ввод...'; 
     }
   } catch (err) {
-    error.value = err.response?.status === 401 
-      ? 'Ошибка авторизации. Проверьте API ключ в .env' 
+    error.value = err.response?.status === 401
+      ? 'Ошибка авторизации. Проверьте API ключ в .env'
       : 'Ошибка соединения с сервером';
     console.error('API Error:', err);
   } finally {
@@ -74,9 +77,9 @@ const handleInput = (e) => {
 const goToCity = (city) => {
   router.push({
     name: 'WeatherCard',
-    params: { 
+    params: {
       id: city.id,
-      name: city.name 
+      name: city.name
     },
     query: {
       lat: city.coord.lat,
@@ -89,16 +92,8 @@ const goToCity = (city) => {
 <template>
   <div class="search">
     <form class="search__form" @submit.prevent>
-      <input
-        v-model="searchQuery"
-        type="text"
-        name="text"
-        class="search__form_input"
-        placeholder="Укажите город"
-        @input="handleInput"
-        @keydown="handleInput"
-        @keydown.enter.prevent
-      />
+      <input v-model="searchQuery" type="text" name="text" class="search__form_input" placeholder="Укажите город"
+        @input="handleInput" @keydown="handleInput" @keydown.enter.prevent />
 
       <div v-if="isLoading" class="search__loading">Поиск городов...</div>
       <div v-else-if="error" class="search__error">
@@ -109,13 +104,8 @@ const goToCity = (city) => {
       </div>
 
       <ul v-if="suggestions.length" class="search__suggestions">
-        <li
-          v-for="city in suggestions"
-          :key="city.id"
-          @click="goToCity(city)"
-        >
-          <span class="city-name">{{ city.name }}, {{ city.sys?.country }}</span>
-          <span class="city-temp">{{ Math.round(city.main?.temp) }}°C</span>
+        <li v-for="city in suggestions" :key="city.id" @click="goToCity(city)">
+          {{ city.name }}
         </li>
       </ul>
     </form>
