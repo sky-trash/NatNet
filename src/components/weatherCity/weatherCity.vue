@@ -14,9 +14,7 @@ const props = defineProps({
 const router = useRouter()
 
 onMounted(() => {
-  const favorites = JSON.parse(localStorage.getItem('favoriteCities')) || []
-  
-  if (favorites.length === 0) {
+  if (!localStorage.getItem('favoriteCities')) {
     const defaultCity = {
       name: 'Ижевск',
       lat: 56.8527,
@@ -72,6 +70,7 @@ const navigateToDetail = () => {
     </div>
   </div>
 </template>
+
 <style>
 @import "./weatherCity.scss";
 </style>
