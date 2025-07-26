@@ -18,6 +18,7 @@
     </div>
   </div> 
 </template>
+
 <style lang="scss" scoped>
   @import "./back.scss";
 </style>

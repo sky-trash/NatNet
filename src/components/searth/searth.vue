@@ -11,9 +11,8 @@ const suggestions = ref([]);
 const isLoading = ref(false);
 const error = ref(null);
 
-// Проверка API ключа
 const API_KEY = import.meta.env.VITE_APP_OWM_KEY;
-console.log('Using API Key:', API_KEY ? '***' + API_KEY.slice(-4) : 'NOT FOUND!');
+
 
 onMounted(() => {
   if (!API_KEY) {
@@ -21,7 +20,7 @@ onMounted(() => {
   }
 });
 
-// Поиск городов с debounce
+
 const fetchCities = debounce(async (query) => {
   if (!API_KEY || query.length === 0) {  
     suggestions.value = [];
@@ -66,14 +65,14 @@ const fetchCities = debounce(async (query) => {
   }
 }, 300);
 
-// Обработчик ввода
+
 const handleInput = (e) => {
   if (e.key === 'Enter') e.preventDefault();
   searchQuery.value = e.target.value;
   fetchCities(searchQuery.value);
 };
 
-// Переход на экран города
+
 const goToCity = (city) => {
   router.push({
     name: 'WeatherCard',
@@ -92,7 +91,7 @@ const goToCity = (city) => {
 <template>
   <div class="search">
     <form class="search__form" @submit.prevent>
-      <input v-model="searchQuery" type="text" name="text" class="search__form_input" placeholder="Укажите город"
+      <input v-model="searchQuery" type="text" name="text" class="search__form__input" placeholder="Укажите город"
         @input="handleInput" @keydown="handleInput" @keydown.enter.prevent />
 
       <div v-if="isLoading" class="search__loading">Поиск городов...</div>

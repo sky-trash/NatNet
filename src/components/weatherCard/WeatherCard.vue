@@ -11,7 +11,7 @@ import Weather from "../weather/weather.vue"
   template {
     background: radial-gradient(80.36% 80.36% at 237.79% 0%, #5a607c 0%, #161b30 100%);
   }
-  @media screen and (width: 360px) {
+  @media screen and (width: 375px) {
     Header {
       display: none
     } 

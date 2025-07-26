@@ -58,43 +58,6 @@ const navigateToDetail = () => {
   </div>
 </template>
 
-<style scoped>
-.favorite-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-left: 10px;
-  position: relative;
-}
-
-.icon, .icon-fill {
-  width: 24px;
-  height: 24px;
-}
-
-.icon-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.icon-fill.active {
-  opacity: 1;
-}
-
-.icon.hidden {
-  opacity: 0;
-}
-
-.weatherCity__card_icons {
-  display: flex;
-  align-items: center;
-}
-</style>
-
 <style>
 @import "./weatherCity.scss";
 </style>

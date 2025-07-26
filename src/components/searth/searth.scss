@@ -9,7 +9,7 @@
   &__form {
     position: relative;
 
-    &_input {
+    &__input {
       width: 100%;
       padding: 12px 20px;
       background: #2a2f45;
@@ -37,7 +37,7 @@
     list-style: none;
     background: white;
     border-radius: 0 0 8px 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 10;
     max-height: 300px;
     overflow-y: auto;
@@ -61,7 +61,8 @@
     color: #666;
     font-weight: bold;
   }
-  &__loading, &__error {
+  &__loading,
+  &__error {
     padding: 10px;
     text-align: center;
     color: #666;
@@ -71,14 +72,14 @@
     color: #ff4444;
   }
 }
-@media screen and (width: 360px) {
-  .searth {
+@media screen and (width: 375px) {
+  .searсh {
     padding: 20px 20px 0 20px;
 
     &__form {
-
-      input {
-        width: 315px;
+      &__input {
+        width: 335px;
+        height: 56px;
       }
     }
   }
