@@ -19,12 +19,17 @@ export default {
     const isFavorite = ref(false);
     const API_KEY = import.meta.env.VITE_APP_OWM_KEY;
 
+    const capitalizeFirstLetter = (string) => {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
     const checkFavoriteStatus = () => {
       const favorites = JSON.parse(localStorage.getItem('favoriteCities') || '[]');
       isFavorite.value = favorites.some(fav => fav.name === weather.value.city);
     };
 
-    const toggleFavorite = () => {
+    const toggleFavorite = (e) => {
+      e.stopPropagation();
       const favorites = JSON.parse(localStorage.getItem('favoriteCities') || '[]');
       const cityIndex = favorites.findIndex(fav => fav.name === weather.value.city);
 
@@ -86,7 +91,7 @@ export default {
 
         weather.value = {
           city: data.name,
-          precipitation: data.weather[0].description,
+          precipitation: capitalizeFirstLetter(data.weather[0].description),
           degree_text: `${Math.round(data.main.temp)}°`,
           degree_img: `/weather/${getLocalIcon(data.weather[0].icon)}.svg`,
           pressure: Math.round(data.main.pressure * 0.750064),
@@ -116,10 +121,10 @@ export default {
 <template>
   <div class="background">
     <div class="back">
-      <a href="/">
+      <a href="/" class="back-link">
         <div class="back__left">
           <div class="back__left_img">
-            <svg class="icon">
+            <svg class="icon chevron-icon">
               <use href="/sprite.svg#chevron-left"></use>
             </svg>
           </div>
@@ -130,10 +135,10 @@ export default {
       </a>
       <div class="back__right">
         <button @click="toggleFavorite" class="favorite-btn">
-          <svg class="icon">
+          <svg class="icon bookmark-icon" :class="{ 'hidden': isFavorite }">
             <use href="/sprite.svg#bookmark-back"></use>
           </svg>
-          <svg class="icon-fill" :class="{ 'active': isFavorite }">
+          <svg class="icon bookmark-fill-icon" :class="{ 'hidden': !isFavorite }">
             <use href="/sprite.svg#bookmark-fill"></use>
           </svg>
         </button>
@@ -156,7 +161,7 @@ export default {
       </div>
       <div class="weather__pressure">
         <div class="weather__pressure_img">
-          <svg class="icon">
+          <svg class="icon pressure-icon">
             <use href="/sprite.svg#barometer"></use>
           </svg>
         </div>

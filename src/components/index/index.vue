@@ -8,19 +8,35 @@ import WeatherCity from "../weatherCity/weatherCity.vue"
 
 const favoriteCities = ref([])
 
+const defaultCoords = {
+  'Москва': { lat: 55.7558, lon: 37.6176 },
+  'Санкт-Петербург': { lat: 59.9343, lon: 30.3351 },
+  'Казань': { lat: 55.7961, lon: 49.1064 },
+  'Ижевск': { lat: 56.8527, lon: 53.2115 },
+  'Грютвикен': { lat: -54.2811, lon: -36.5086 }
+}
+
 // Загрузка избранных городов из localStorage
 onMounted(() => {
   const savedCities = localStorage.getItem('favoriteCities')
   if (savedCities) {
-    favoriteCities.value = JSON.parse(savedCities)
+    // Добавляем координаты, если их нет в сохраненных данных
+    favoriteCities.value = JSON.parse(savedCities).map(city => ({
+      ...city,
+      lat: city.lat || defaultCoords[city.name]?.lat || 55.7558,
+      lon: city.lon || defaultCoords[city.name]?.lon || 37.6176
+    }))
   }
 })
 
-// Добавьте эту функцию для обработки переключения избранного
 const toggleFavorite = (city) => {
   const index = favoriteCities.value.findIndex(c => c.name === city.name)
   if (index === -1) {
-    favoriteCities.value.push(city)
+    favoriteCities.value.push({
+      ...city,
+      lat: city.lat || defaultCoords[city.name]?.lat || 55.7558,
+      lon: city.lon || defaultCoords[city.name]?.lon || 37.6176
+    })
   } else {
     favoriteCities.value.splice(index, 1)
   }
@@ -33,15 +49,19 @@ const toggleFavorite = (city) => {
   <Searth />
 
   <div v-if="favoriteCities.length > 0" class="favorites-container">
-    <WeatherCity 
-      v-for="city in favoriteCities" 
-      :key="city.name" 
-      :city="city.name" 
-      :temp="city.temp" 
-      :icon="city.icon"
-      :isFavorite="true" 
-      @toggle-favorite="toggleFavorite(city)" 
-    />
+    <div class="favorites-container-flex">
+      <WeatherCity 
+        v-for="city in favoriteCities" 
+        :key="city.name" 
+        :city="city.name" 
+        :temp="city.temp" 
+        :icon="city.icon"
+        :lat="city.lat"
+        :lon="city.lon"
+        :isFavorite="true" 
+        @toggle-favorite="toggleFavorite(city)" 
+      />
+    </div>
   </div>
 
   <template v-else>
@@ -53,9 +73,13 @@ const toggleFavorite = (city) => {
 <style>
 .favorites-container {
   padding: 55px 140px;
-  gap: 30px;
+  display: flex;
+  justify-content: center;
+}
+.favorites-container-flex {
   display: flex;
   flex-wrap: wrap;
+  gap: 30px;
   justify-content: flex-start;
 }
 </style>
