@@ -1,0 +1,29 @@
+.city {
+  display: flex;
+  padding: 26px 491px 0 449px;
+
+  &__text {
+    margin: 17px 0 0 4px;
+
+    h1 {
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 16px;
+      text-align: center;
+      color: #8a91ab;
+
+      width: 190px;
+      height: 38px;
+
+      a {
+        color: white;
+        text-decoration: underline dashed;
+      }
+    }
+  }
+}
+@media screen and (width: 360px) {
+  .city {
+    padding: 27px 103px 0 60px;
+  }
+}
