@@ -50,17 +50,8 @@ const toggleFavorite = (city) => {
 
   <div v-if="favoriteCities.length > 0" class="favorites-container">
     <div class="favorites-container-flex">
-      <WeatherCity 
-        v-for="city in favoriteCities" 
-        :key="city.name" 
-        :city="city.name" 
-        :temp="city.temp" 
-        :icon="city.icon"
-        :lat="city.lat"
-        :lon="city.lon"
-        :isFavorite="true" 
-        @toggle-favorite="toggleFavorite(city)" 
-      />
+      <WeatherCity v-for="city in favoriteCities" :key="city.name" :city="city.name" :temp="city.temp" :icon="city.icon"
+        :lat="city.lat" :lon="city.lon" :isFavorite="true" @toggle-favorite="toggleFavorite(city)" />
     </div>
   </div>
 
@@ -76,10 +67,21 @@ const toggleFavorite = (city) => {
   display: flex;
   justify-content: center;
 }
+
 .favorites-container-flex {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: flex-start;
+}
+
+@media screen and (max-width: 375px) {
+  .favorites-container {
+    padding: 33px 0;
+  }
+  .favorites-container-flex {
+    gap: 20px;
+    padding: 0 19px;
+  }
 }
 </style>

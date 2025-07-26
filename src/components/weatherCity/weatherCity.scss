@@ -87,12 +87,13 @@
       }
     }
   }
-  @media screen and (width: 375px) {
-    padding: 33px 20px;
-    gap: 19px;
+}
+@media screen and (max-width: 375px) {
+  .weatherCity {
+    padding: 0px;
 
     &__card {
-      width: 148px;
+      width: 158px;
     }
   }
 }

@@ -10,7 +10,6 @@
     position: relative;
 
     &__input {
-      width: 100%;
       padding: 12px 20px;
       background: #2a2f45;
       border-radius: 24px;
@@ -72,8 +71,8 @@
     color: #ff4444;
   }
 }
-@media screen and (width: 375px) {
-  .searсh {
+@media screen and (max-width: 375px) {
+  .search {
     padding: 20px 20px 0 20px;
 
     &__form {
