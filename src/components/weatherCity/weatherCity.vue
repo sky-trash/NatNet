@@ -13,8 +13,9 @@ const props = defineProps({
 
 const router = useRouter()
 
+// Устанавливаем дефолтный город только если это компонент для избранного
 onMounted(() => {
-  if (!localStorage.getItem('favoriteCities')) {
+  if (props.isFavorite && !localStorage.getItem('favoriteCities')) {
     const defaultCity = {
       name: 'Ижевск',
       lat: 56.8527,
