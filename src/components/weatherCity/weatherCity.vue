@@ -1,5 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { onMounted } from 'vue'
 
 const props = defineProps({
   city: { type: String, default: 'Москва' },
@@ -12,10 +13,24 @@ const props = defineProps({
 
 const router = useRouter()
 
+onMounted(() => {
+  const favorites = JSON.parse(localStorage.getItem('favoriteCities')) || []
+  
+  if (favorites.length === 0) {
+    const defaultCity = {
+      name: 'Ижевск',
+      lat: 56.8527,
+      lon: 53.2115,
+      temp: '0°',
+      icon: '/weather/cloudy.svg'
+    }
+    localStorage.setItem('favoriteCities', JSON.stringify([defaultCity]))
+  }
+})
+
 const navigateToDetail = () => {
   if (!props.lat || !props.lon) {
     console.error('Координаты не определены для города:', props.city)
-    // Можно добавить дефолтные координаты для Москвы, например
     const defaultCoords = {
       'Москва': { lat: 55.7558, lon: 37.6176 },
       'Санкт-Петербург': { lat: 59.9343, lon: 30.3351 },
@@ -57,7 +72,6 @@ const navigateToDetail = () => {
     </div>
   </div>
 </template>
-
 <style>
 @import "./weatherCity.scss";
 </style>
