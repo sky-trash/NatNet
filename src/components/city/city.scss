@@ -22,6 +22,15 @@
       }
     }
   }
+  .icon {
+    margin: -69px 0 0;
+    width: 32px;
+    fill: currentColor;
+
+    &.chevron-icon {
+      color: #8a91ab;
+    }
+  }
 }
 @media screen and (width: 375px) {
   .city {

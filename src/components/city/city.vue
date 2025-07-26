@@ -5,13 +5,13 @@ const router = useRouter()
 
 const goToIzhevsk = () => {
   const izhevskCoords = { lat: 56.8527, lon: 53.2115 } // Координаты Ижевска
-  
+
   router.push({
     name: 'WeatherCard',
     params: { name: 'Ижевск' },
-    query: { 
-      lat: izhevskCoords.lat, 
-      lon: izhevskCoords.lon 
+    query: {
+      lat: izhevskCoords.lat,
+      lon: izhevskCoords.lon
     }
   })
 }
@@ -20,7 +20,9 @@ const goToIzhevsk = () => {
 <template>
   <div class="city">
     <div class="city__img">
-      <img src="../../../public/city/Arrow.svg" alt="arrow">
+      <svg class="icon chevron-icon">
+        <use href="/sprite.svg#arrow"></use>
+      </svg>
     </div>
     <div class="city__text">
       <h1>Начните вводить город, например, <a @click="goToIzhevsk" class="city-link">Ижевск</a></h1>
@@ -28,5 +30,5 @@ const goToIzhevsk = () => {
   </div>
 </template>
 <style lang="scss" scoped>
-  @import "./city.scss";
+@import "./city.scss";
 </style>

@@ -32,6 +32,19 @@
       }
     }
   }
+  .icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+
+    &.chevron-icon {
+      color: #8a91ab;
+    }
+
+    &.pressure-icon {
+      color: #8a91ab;
+    }
+  }
 }
 @media screen and (width: 375px) {
   .header {
